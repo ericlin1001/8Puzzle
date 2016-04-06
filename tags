@@ -1,0 +1,81 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AstartSearch	8Puzzle.cpp	/^Node* AstartSearch(Node*start){$/;"	f
+DOWN	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	e	enum:Puzzle::MoveType	file:
+LEFT	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	e	enum:Puzzle::MoveType	file:
+MoveType	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	g	class:Puzzle	file:
+Node	8Puzzle.cpp	/^	Node(){g=0;calF();}$/;"	f	struct:Node
+Node	8Puzzle.cpp	/^	Node(const Puzzle &pp) :p(pp){$/;"	f	struct:Node
+Node	8Puzzle.cpp	/^struct Node{$/;"	s	file:
+NodeCmp	8Puzzle.cpp	/^struct NodeCmp{$/;"	s	file:
+NodeEq	8Puzzle.cpp	/^struct NodeEq{$/;"	s	file:
+PriorityQueue	8Puzzle.cpp	/^		PriorityQueue(){$/;"	f	class:PriorityQueue
+PriorityQueue	8Puzzle.cpp	/^		PriorityQueue(const vector<T>&p):data(p){$/;"	f	class:PriorityQueue
+PriorityQueue	8Puzzle.cpp	/^class PriorityQueue{$/;"	c	file:
+Puzzle	8Puzzle.cpp	/^class Puzzle{$/;"	c	file:
+RIGHT	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	e	enum:Puzzle::MoveType	file:
+UNKOWN	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	e	enum:Puzzle::MoveType	file:
+UP	8Puzzle.cpp	/^		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};$/;"	e	enum:Puzzle::MoveType	file:
+calF	8Puzzle.cpp	/^	void calF(){$/;"	f	struct:Node
+calH	8Puzzle.cpp	/^	int calH(){$/;"	f	struct:Node
+calH2	8Puzzle.cpp	/^	int calH2(){$/;"	f	struct:Node
+cc	8Puzzle.cpp	/^		int cr, cc;$/;"	m	class:Puzzle	file:
+const_iterator	8Puzzle.cpp	/^		typedef typename vector<T>::const_iterator const_iterator;$/;"	t	class:PriorityQueue	file:
+convertMove	8Puzzle.cpp	/^Puzzle::MoveType convertMove(const char *m){$/;"	f
+cr	8Puzzle.cpp	/^		int cr, cc;$/;"	m	class:Puzzle	file:
+d	8Puzzle.cpp	/^		int d[3][3];$/;"	m	class:Puzzle	file:
+data	8Puzzle.cpp	/^		vector<T>data;$/;"	m	class:PriorityQueue	file:
+empty	8Puzzle.cpp	/^		bool empty()const{$/;"	f	class:PriorityQueue
+erase	8Puzzle.cpp	/^		void erase(iterator iter){$/;"	f	class:PriorityQueue
+f	8Puzzle.cpp	/^	int g, h, f;$/;"	m	struct:Node	file:
+fact	8Puzzle.cpp	/^int fact(int n){$/;"	f
+find_element	8Puzzle.cpp	/^		const_iterator find_element(const T&t)const{$/;"	f	class:PriorityQueue
+find_element	8Puzzle.cpp	/^		iterator find_element(const T&t){$/;"	f	class:PriorityQueue
+fromParentMove	8Puzzle.cpp	/^	Puzzle::MoveType fromParentMove;$/;"	m	struct:Node	file:
+g	8Puzzle.cpp	/^	int g, h, f;$/;"	m	struct:Node	file:
+get	8Puzzle.cpp	/^		int get(int r, int c)const{$/;"	f	class:Puzzle
+getGoal	8Puzzle.cpp	/^		Puzzle &getGoal(){$/;"	f	class:Puzzle
+getInvertedNo	8Puzzle.cpp	/^		int getInvertedNo()const{$/;"	f	class:Puzzle	file:
+getMoveTypeStr	8Puzzle.cpp	/^const char * getMoveTypeStr(Puzzle::MoveType type){$/;"	f
+getPath	8Puzzle.cpp	/^vector<Node*>getPath(Node*end){$/;"	f
+getPos	8Puzzle.cpp	/^		void getPos(int v, int &pr, int &pc){$/;"	f	class:Puzzle
+getSucessive	8Puzzle.cpp	/^	vector<Node*>getSucessive(){$/;"	f	struct:Node
+getValidMove	8Puzzle.cpp	/^		vector<MoveType>getValidMove(){$/;"	f	class:Puzzle
+h	8Puzzle.cpp	/^	int g, h, f;$/;"	m	struct:Node	file:
+has_element	8Puzzle.cpp	/^		bool has_element(const T&t)const{$/;"	f	class:PriorityQueue
+initPuzzle	8Puzzle.cpp	/^void initPuzzle(Puzzle&p){$/;"	f
+isCompatiable	8Puzzle.cpp	/^		bool isCompatiable(const Puzzle&p){$/;"	f	class:Puzzle
+isGoal	8Puzzle.cpp	/^	bool isGoal(){$/;"	f	struct:Node
+isSolvable	8Puzzle.cpp	/^		bool isSolvable(){$/;"	f	class:Puzzle
+iterator	8Puzzle.cpp	/^		typedef typename vector<T>::iterator iterator;$/;"	t	class:PriorityQueue	file:
+main	8Puzzle.cpp	/^int main()$/;"	f
+move	8Puzzle.cpp	/^		bool move(MoveType type){$/;"	f	class:Puzzle
+operator ()	8Puzzle.cpp	/^	bool operator()(const Node*a,const Node *b){$/;"	f	struct:NodeCmp
+operator ()	8Puzzle.cpp	/^	bool operator()(const Node*a,const Node *b){$/;"	f	struct:NodeEq
+operator ==	8Puzzle.cpp	/^		bool operator==(const Puzzle&p)const{$/;"	f	class:Puzzle
+operator []	8Puzzle.cpp	/^		T&operator[](int i){$/;"	f	class:PriorityQueue
+operator []	8Puzzle.cpp	/^		const T&operator[](int i)const{$/;"	f	class:PriorityQueue
+p	8Puzzle.cpp	/^	Puzzle p;$/;"	m	struct:Node	file:
+parent	8Puzzle.cpp	/^	Node*parent;$/;"	m	struct:Node	file:
+playGame	8Puzzle.cpp	/^void playGame(Puzzle&p){$/;"	f
+pop_top	8Puzzle.cpp	/^		void pop_top(){$/;"	f	class:PriorityQueue
+print	8Puzzle.cpp	/^		void print(){$/;"	f	class:Puzzle
+printArr	8Puzzle.cpp	/^void printArr(const T &arr){$/;"	f
+push_back	8Puzzle.cpp	/^		void push_back(const T &t){$/;"	f	class:PriorityQueue
+random	8Puzzle.cpp	/^		void random(){$/;"	f	class:Puzzle
+rebalance	8Puzzle.cpp	/^		void rebalance(){$/;"	f	class:PriorityQueue
+recreatePuzzle	8Puzzle.cpp	/^void recreatePuzzle(Puzzle&p){$/;"	f
+remap	8Puzzle.cpp	/^Puzzle::MoveType remap(const char c){$/;"	f
+revert	8Puzzle.cpp	/^Puzzle::MoveType revert(Puzzle::MoveType type){$/;"	f
+set	8Puzzle.cpp	/^		void set(int r, int c, int v){$/;"	f	class:Puzzle
+setPuzzle	8Puzzle.cpp	/^		void setPuzzle(int vv[3][3]){$/;"	f	class:Puzzle
+setPuzzle	8Puzzle.cpp	/^		void setPuzzle(int vv[9]){$/;"	f	class:Puzzle
+size	8Puzzle.cpp	/^		int size()const{$/;"	f	class:PriorityQueue
+solveGame	8Puzzle.cpp	/^void solveGame(Puzzle&p){$/;"	f
+solvePuzzle	8Puzzle.cpp	/^vector<Node*>solvePuzzle(Puzzle &p){$/;"	f
+top	8Puzzle.cpp	/^		T&top(){$/;"	f	class:PriorityQueue
+top	8Puzzle.cpp	/^		const T&top()const{$/;"	f	class:PriorityQueue
