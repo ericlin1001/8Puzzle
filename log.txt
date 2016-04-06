@@ -13,3 +13,37 @@ maxlen:27
 3 4 8 
 5 6 7 
 
+maxRun:362880 run:100
+maxRun:362880 run:200
+maxRun:362880 run:300
+maxRun:362880 run:400
+maxRun:362880 run:500
+maxRun:362880 run:600
+maxRun:362880 run:700
+maxRun:362880 run:800
+maxRun:362880 run:900
+maxRun:362880 run:1000
+maxRun:362880 run:1100
+maxRun:362880 run:1200
+maxRun:362880 run:1300
+maxRun:362880 run:1400
+maxRun:362880 run:1500
+maxRun:362880 run:1600
+maxRun:362880 run:1700
+maxRun:362880 run:1800
+maxRun:362880 run:1900
+maxRun:362880 run:2000
+maxRun:362880 run:2100
+maxRun:362880 run:2200
+maxRun:362880 run:2300
+maxRun:362880 run:2400
+maxRun:362880 run:2500
+maxRun:362880 run:2600
+maxRun:362880 run:2700
+maxRun:362880 run:2800
+maxRun:362880 run:2900
+maxlen:29
+  1 6 
+2 5 8 
+3 4 7 
+
