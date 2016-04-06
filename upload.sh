@@ -1,4 +1,4 @@
 #!/bin/bash
 git add *
-git commit -m "add upload.sh"
+git commit -m $1
 git push origin master
