@@ -1,5 +1,3 @@
-//
-
 #include<iostream>
 #include<vector>
 #include<stdlib.h>
@@ -7,6 +5,10 @@
 #include<string.h>
 #include<algorithm>
 using namespace std;
+
+/*PriorityQueue(top is the max element):
+ * PriorityQueue<DataType, Compare, Eq>
+ */
 template<class T,class Compare=less<T>,class Eq=equal_to<T> >
 class PriorityQueue{
 	public:
@@ -81,39 +83,12 @@ class PriorityQueue{
 		int size()const{
 			return data.size();
 		}
-
 };
+
 class Puzzle{
 	private:
 		int d[3][3];
 		int cr, cc;
-	public:
-		int get(int r, int c)const{
-			return d[r][c];
-		}
-		void set(int r, int c, int v){
-			if (v == 0){
-				cr = r;
-				cc = c;
-			}
-			d[r][c] = v;
-		}
-		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};
-
-		vector<MoveType>getValidMove(){
-			vector<MoveType>ms;
-			/*
-			   if (cr < 2)ms.push_back(UP);
-			   if (cr >0)ms.push_back(DOWN);
-			   if (cc < 2)ms.push_back(LEFT);
-			   if (cc >0)ms.push_back(RIGHT);
-			   */
-			if (cr < 2)ms.push_back(UP);
-			if (cr >0)ms.push_back(DOWN);
-			if (cc < 2)ms.push_back(LEFT);
-			if (cc >0)ms.push_back(RIGHT);
-			return ms;
-		}
 	private:
 		int getInvertedNo()const{
 			//ignore 0.
@@ -128,10 +103,31 @@ class Puzzle{
 			return n;
 		}
 	public:
-		bool isCompatiable(const Puzzle&p){
+		enum MoveType{UP, DOWN, LEFT, RIGHT,UNKOWN};
+
+		int get(int r, int c)const{
+			return d[r][c];
+		}
+		void set(int r, int c, int v){
+			if (v == 0){
+				cr = r;
+				cc = c;
+			}
+			d[r][c] = v;
+		}
+		vector<MoveType>getValidMove(){
+			vector<MoveType>ms;
+			if (cr < 2)ms.push_back(UP);
+			if (cr >0)ms.push_back(DOWN);
+			if (cc < 2)ms.push_back(LEFT);
+			if (cc >0)ms.push_back(RIGHT);
+			return ms;
+		}
+	public:
+		bool isCompatiable(const Puzzle&p)const{
 			return (getInvertedNo()-p.getInvertedNo())%2==0;
 		}
-		bool isSolvable(){
+		bool isSolvable()const{
 			return isCompatiable(getGoal());
 		}
 		bool move(MoveType type){
@@ -183,7 +179,7 @@ class Puzzle{
 				}
 			}
 		}
-		Puzzle &getGoal(){
+		Puzzle &getGoal()const{
 			static Puzzle *goal=0;
 			if (goal == 0)goal = new Puzzle();
 			int r;
@@ -192,7 +188,7 @@ class Puzzle{
 			goal->setPuzzle(vv);
 			return *goal;
 		}
-		void print(){
+		void print()const{
 			int r;
 			int c;
 			for (r = 0; r < 3; r++){
@@ -248,96 +244,108 @@ class Puzzle{
 			}
 			return true;
 		}
-};
-const char * getMoveTypeStr(Puzzle::MoveType type){
+	public://static 
+		static const char * moveTypeToString(Puzzle::MoveType type){
+			switch (type){
+				case Puzzle::UP:
+					return "UP";
+				case Puzzle::DOWN:
+					return "DOWN";
+				case Puzzle::LEFT:
+					return "LEFT";
+				case Puzzle::RIGHT:
+					return "RIGHT";
+			}
+			return "UNKONW";
+		}
+static Puzzle::MoveType revertMoveType(Puzzle::MoveType type){
 	switch (type){
 		case Puzzle::UP:
-			return "UP";
+			return Puzzle::DOWN;
 		case Puzzle::DOWN:
-			return "DOWN";
+			return Puzzle::UP;
 		case Puzzle::LEFT:
-			return "LEFT";
+			return Puzzle::RIGHT;
 		case Puzzle::RIGHT:
-			return "RIGHT";
+			return Puzzle::LEFT;
 	}
-	return "UNKONW";
 }
 
-Puzzle::MoveType remap(const char c){
-	switch (c){
-		case 'w':
+};
+
+#include<map>
+Puzzle::MoveType remap(char key,Puzzle::MoveType move,const char *keyMapper,bool keyToMove){
+	int i;
+	for(i=0;i<4;i++){
+		if(keyMapper[i]==key)break;
+	}
+	switch (i){
+		case 0:
 			return Puzzle::UP;
-		case 's':
+		case 1:
 			return Puzzle::DOWN;
-		case 'a':
+		case 2:
 			return Puzzle::LEFT;
-		case 'd':
+		case 3:
 			return Puzzle::RIGHT;
 	}
 	return Puzzle::UNKOWN;
 }
-/*
-   while (1){		
-   p.move(remap(move));		
-   p.print();
-   if (p == goal)break;
-   vector<Puzzle::MoveType>ms = p.getValidMove();
-   cout << "ValidMove:";
-   for (int i = 0; i < ms.size(); i++){
-   cout << getMoveTypeStr(ms[i])<<"("<<ms[i]<<\n")" << ",";
-   }
-   cout << endl;
-   cout << "Move:";
-   cin >> move;
-   }
-   cout << "You win!";
-   */
-Puzzle::MoveType revert(Puzzle::MoveType type){
-	switch (type){
-		case Puzzle::UP:
-			return Puzzle::DOWN;
-		case Puzzle::DOWN:
-			return Puzzle::UP;
-		case Puzzle::LEFT:
-			return Puzzle::RIGHT;
-		case Puzzle::RIGHT:
-			return Puzzle::LEFT;
-	}
-}
-void playGame(Puzzle&p){
-	char move = 'a';
+void playGame(const Puzzle&pp){
+	Puzzle p=pp;
+	Puzzle::MoveType move = Puzzle::UNKOWN;
 	Puzzle goal = p.getGoal();
-	cout << "Goal:" << endl; goal.print();
 	vector<Puzzle::MoveType>moves;
+	map<char,Puzzle::MoveType>keyMapper;
+	map<Puzzle::MoveType,char>revertKeyMapper;
+	keyMapper['w']=Puzzle::UP;
+	keyMapper['s']=Puzzle::DOWN;
+	keyMapper['a']=Puzzle::LEFT;
+	keyMapper['d']=Puzzle::RIGHT;
+	for(map<char,Puzzle::MoveType>::const_iterator i=keyMapper.begin();i!=keyMapper.end();++i){
+		revertKeyMapper[i->second]=i->first;
+	}
+	cout << "Goal:" << endl; goal.print();
 	while (1){		
-		p.print();
+		cout<<"Current:"<<endl;p.print();
 		if (p == goal)break;
 		vector<Puzzle::MoveType>ms = p.getValidMove();
 		cout << "ValidMove:";
 		for (int i = 0; i < ms.size(); i++){
-			cout << getMoveTypeStr(ms[i])<<"("<<ms[i]<<")" << ",";
+			cout << Puzzle::moveTypeToString(ms[i])<<"("<<revertKeyMapper[ms[i]]<<")" << ",";
 		}
 		cout << endl;
+		cout<<"Key(b) for reverting to last step.";
+		cout << endl;
+		//receive input:
 		cout << "Move:";
-		cin >> move;
-		if(move=='b'){
+		char tmp;
+		cin >> tmp;
+		if(tmp=='b'){
+			if(moves.empty()){
+				cout<<"Warning: this is oldest step."<<endl;
+			}else{
 			Puzzle::MoveType last=moves.back();
 			moves.pop_back();
-			p.move(revert(last));
+			p.move(Puzzle::revertMoveType(last));
+			}
 		}else{
-			if(p.move(remap(move))){
-				moves.push_back(remap(move));
+			move=keyMapper[tmp];
+			if(p.move(move)){
+				moves.push_back(move);
 			}
 		}
 	}
 	cout<<"You use "<<moves.size()<<" moves."<<endl;
 	cout<<"Moves:[";
 	for(int i=0;i<moves.size();i++){
-		cout << getMoveTypeStr(moves[i])<< ",";
+		cout << Puzzle::moveTypeToString(moves[i])<< ",";
 	}
 	cout<<"]"<<endl;
-	cout << "You win!";
+	cout << "You win!"<<endl;
+	cout<<endl;
 }
+//******************Solve Puzzle**********************
 struct Node;
 Node* newNode(const Puzzle&p);
 void deleteNodeList();
@@ -470,37 +478,25 @@ vector<Node*>getPath(Node*end){
 	reverse(ns.begin(),ns.end());
 	return ns;
 }
-template<class T>
-void printArr(const T &arr){
-	cout<<'[';
-	for(int i=0;i<arr.size();i++){
-		cout<<arr[i]<<",";
+vector<Puzzle::MoveType>solvePuzzle(const Puzzle &p){
+	vector<Puzzle::MoveType>ms;
+	if(!p.isSolvable()){
+		return ms;
 	}
-	cout<<"]"<<endl;
+	vector<Node*>ns=getPath(AstartSearch(newNode(p)));
+	for(int i=1;i<ns.size();i++){
+		ms.push_back(ns[i]->fromParentMove);
+	}
+	deleteNodeList();
+	return ms;
 }
-void initPuzzle(Puzzle&p){
+//******************End Solve Puzzle**********************
+
+void randomPuzzle(Puzzle&p){
 	srand(time(NULL));
 	do{
 		p.random();
 	}while(!p.isSolvable());
-}
-vector<Node*>solvePuzzle(Puzzle &p){
-	return getPath(AstartSearch(newNode(p)));
-}
-void solveGame(Puzzle&p){
-	cout<<"Solving..."<<endl;
-	Node *start=newNode(p);
-	Node* end=AstartSearch(start);
-	vector<Node*>ns=getPath(end);
-	for(int i=1;i<ns.size();i++){
-		cout<<"After Action:"<<getMoveTypeStr(ns[i]->fromParentMove)<<endl;
-		ns[i]->p.print();
-		cout<<endl;
-
-	}
-	cout<<"number of moves:"<<ns.size()-1<<endl;
-	cout << "Computer wins!"<<endl;
-	cout<<endl;
 }
 Puzzle::MoveType convertMove(const char *m){
 	if(strcmp(m,"UP")==0)return Puzzle::UP;
@@ -508,29 +504,46 @@ Puzzle::MoveType convertMove(const char *m){
 	if(strcmp(m,"RIGHT")==0)return Puzzle::RIGHT;
 	if(strcmp(m,"DOWN")==0)return Puzzle::DOWN;
 }
-void recreatePuzzle(Puzzle&p){
+void recreatePuzzle(Puzzle&p,const char *moves[],int len){
 	p=p.getGoal();
-	const char *moves[]={"RIGHT","UP","LEFT","UP","LEFT","DOWN","RIGHT","UP","LEFT","DOWN","DOWN","RIGHT","RIGHT","UP","LEFT","LEFT","DOWN","RIGHT","UP","LEFT","DOWN","RIGHT","RIGHT","UP","UP","LEFT","LEFT","DOWN","RIGHT","RIGHT","UP","LEFT","LEFT","DOWN","RIGHT","UP","RIGHT","DOWN","LEFT"};
-	int len=39;
-	cout<<"len:"<<len<<endl;
 	for(int i=0;i<len;i++){
-		p.move(revert(convertMove(moves[len-i-1])));
+		p.move(Puzzle::revertMoveType(convertMove(moves[len-i-1])));
 	}
 }
+
+void solveGame(const Puzzle&tp){
+	Puzzle p=tp;
+	cout<<"Solving..."<<endl;
+	if(!p.isSolvable()){
+		cout<<"This Puzzle is unsolveable."<<endl;
+		return ;
+	}
+	p.print();
+	cout<<endl;
+	vector<Puzzle::MoveType>ms=solvePuzzle(p);
+	for(int i=1;i<ms.size();i++){
+		cout<<"After Action:"<<Puzzle::moveTypeToString(ms[i])<<endl;
+		p.move(ms[i]);
+		p.print();
+		cout<<endl;
+	}
+	cout<<"number of moves:"<<ms.size()<<endl;
+	cout << "Computer wins!"<<endl;
+	cout<<endl;
+}
+
+
 int fact(int n){
 	if(n==1)return 1;
 	return n*fact(n-1);
 }
-int main()
-{
-	Puzzle p,playerP,computerP,maxP;
+void findMaxMotionPuzzle(){
+	Puzzle p,maxP;
 	int maxLen=0;
 	int MaxRun=fact(9);
 	int v[9]={0,1,2,3,4,5,6,7,8};
 	int run=0;
-	
 	while(run++<MaxRun){
-		//initPuzzle(p);
 		if(run%100==0)printf("maxRun:%d run:%d\n",MaxRun,run);
 		p.setPuzzle(v);
 		next_permutation(v,v+9);
@@ -543,18 +556,28 @@ int main()
 			cout<<"maxlen:"<<maxLen<<endl;
 			p.print();
 		}
-		//cout<<"len:"<<len<<endl;
 	}
 	cout<<"Result:"<<endl;
 	cout<<"MaxLen:"<<maxLen<<endl;
 	maxP.print();
+}
+int main()
+{
+	Puzzle p;
+	const char *moves[]={"RIGHT","UP","LEFT","UP","LEFT","DOWN","RIGHT","UP","LEFT","DOWN","DOWN","RIGHT","RIGHT","UP","LEFT","LEFT","DOWN","RIGHT","UP","LEFT","DOWN","RIGHT","RIGHT","UP","UP","LEFT","LEFT","DOWN","RIGHT","RIGHT","UP","LEFT","LEFT","DOWN","RIGHT","UP","RIGHT","DOWN","LEFT"};
+	int len=39;
 
-	return 0;
-	//	recreatePuzzle(p);
-	playerP=p;
-	computerP=p;
-	solveGame(computerP);
-	playGame(playerP);
+	recreatePuzzle(p,moves,len);
+
+
+	solveGame(p);
+	playGame(p);
+
+	randomPuzzle(p);
+
+	solveGame(p);
+	playGame(p);
+	//
+	findMaxMotionPuzzle();
 	return 0;
 }
-
