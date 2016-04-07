@@ -5,7 +5,7 @@ H is evalated by summing the hanming distance of each tile's position and its co
 <br/>
 
 ##Whether a puzzle is solvable? 
-----
+---
 <p>
 We denote a puzzle as A[i][j], where i=0,1,2; j=0,1,2; A[i][j]=0,1...8;<br/>
 And A[i][j] is the coresponding number of ith row and jth column.
@@ -39,11 +39,14 @@ The program's also included in the main.cpp.
 ###The most difficult Puzzle(needs at leat 31 motion), and coresponding goal position.
 ---
 Puzzle needed to solve:
-  2 1 
-3 5 8 
-4 6 7 
+
+	  2 1 
+	3 5 8 
+	4 6 7 
+
 
 Goal Puzzle needed to reach:
-1 2 3 
-8   4 
-7 6 5 
+
+	1 2 3 
+	8   4 
+	7 6 5 
