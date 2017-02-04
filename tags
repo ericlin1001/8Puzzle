@@ -40,22 +40,21 @@ find_element	8Puzzle.cpp	/^		iterator find_element(const T&t){$/;"	f	class:Prior
 fromParentMove	8Puzzle.cpp	/^	Puzzle::MoveType fromParentMove;$/;"	m	struct:Node	file:
 g	8Puzzle.cpp	/^	int g, h, f;$/;"	m	struct:Node	file:
 get	8Puzzle.cpp	/^		int get(int r, int c)const{$/;"	f	class:Puzzle
-getGoal	8Puzzle.cpp	/^		Puzzle &getGoal(){$/;"	f	class:Puzzle
+getGoal	8Puzzle.cpp	/^		Puzzle &getGoal()const{$/;"	f	class:Puzzle
 getInvertedNo	8Puzzle.cpp	/^		int getInvertedNo()const{$/;"	f	class:Puzzle	file:
-getMoveTypeStr	8Puzzle.cpp	/^const char * getMoveTypeStr(Puzzle::MoveType type){$/;"	f
 getPath	8Puzzle.cpp	/^vector<Node*>getPath(Node*end){$/;"	f
 getPos	8Puzzle.cpp	/^		void getPos(int v, int &pr, int &pc){$/;"	f	class:Puzzle
 getSucessive	8Puzzle.cpp	/^	vector<Node*>getSucessive(){$/;"	f	struct:Node
 getValidMove	8Puzzle.cpp	/^		vector<MoveType>getValidMove(){$/;"	f	class:Puzzle
 h	8Puzzle.cpp	/^	int g, h, f;$/;"	m	struct:Node	file:
 has_element	8Puzzle.cpp	/^		bool has_element(const T&t)const{$/;"	f	class:PriorityQueue
-initPuzzle	8Puzzle.cpp	/^void initPuzzle(Puzzle&p){$/;"	f
-isCompatiable	8Puzzle.cpp	/^		bool isCompatiable(const Puzzle&p){$/;"	f	class:Puzzle
+isCompatiable	8Puzzle.cpp	/^		bool isCompatiable(const Puzzle&p)const{$/;"	f	class:Puzzle
 isGoal	8Puzzle.cpp	/^	bool isGoal(){$/;"	f	struct:Node
-isSolvable	8Puzzle.cpp	/^		bool isSolvable(){$/;"	f	class:Puzzle
+isSolvable	8Puzzle.cpp	/^		bool isSolvable()const{$/;"	f	class:Puzzle
 iterator	8Puzzle.cpp	/^		typedef typename vector<T>::iterator iterator;$/;"	t	class:PriorityQueue	file:
 main	8Puzzle.cpp	/^int main()$/;"	f
 move	8Puzzle.cpp	/^		bool move(MoveType type){$/;"	f	class:Puzzle
+moveTypeToString	8Puzzle.cpp	/^		static const char * moveTypeToString(Puzzle::MoveType type){$/;"	f	class:Puzzle
 newNode	8Puzzle.cpp	/^Node* newNode(const Puzzle&p){$/;"	f
 nodeList	8Puzzle.cpp	/^vector<Node*>nodeList;$/;"	v
 operator ()	8Puzzle.cpp	/^	bool operator()(const Node*a,const Node *b){$/;"	f	struct:NodeCmp
@@ -65,21 +64,21 @@ operator []	8Puzzle.cpp	/^		T&operator[](int i){$/;"	f	class:PriorityQueue
 operator []	8Puzzle.cpp	/^		const T&operator[](int i)const{$/;"	f	class:PriorityQueue
 p	8Puzzle.cpp	/^	Puzzle p;$/;"	m	struct:Node	file:
 parent	8Puzzle.cpp	/^	Node*parent;$/;"	m	struct:Node	file:
-playGame	8Puzzle.cpp	/^void playGame(Puzzle&p){$/;"	f
+playGame	8Puzzle.cpp	/^void playGame(const Puzzle&pp){$/;"	f
 pop_top	8Puzzle.cpp	/^		void pop_top(){$/;"	f	class:PriorityQueue
-print	8Puzzle.cpp	/^		void print(){$/;"	f	class:Puzzle
-printArr	8Puzzle.cpp	/^void printArr(const T &arr){$/;"	f
+print	8Puzzle.cpp	/^		void print()const{$/;"	f	class:Puzzle
 push_back	8Puzzle.cpp	/^		void push_back(const T &t){$/;"	f	class:PriorityQueue
 random	8Puzzle.cpp	/^		void random(){$/;"	f	class:Puzzle
+randomPuzzle	8Puzzle.cpp	/^void randomPuzzle(Puzzle&p){$/;"	f
 rebalance	8Puzzle.cpp	/^		void rebalance(){$/;"	f	class:PriorityQueue
 recreatePuzzle	8Puzzle.cpp	/^void recreatePuzzle(Puzzle&p,const char *moves[],int len){$/;"	f
-remap	8Puzzle.cpp	/^Puzzle::MoveType remap(const char c){$/;"	f
-revert	8Puzzle.cpp	/^Puzzle::MoveType revert(Puzzle::MoveType type){$/;"	f
+remap	8Puzzle.cpp	/^Puzzle::MoveType remap(char key,Puzzle::MoveType move,const char *keyMapper,bool keyToMove){$/;"	f
+revertMoveType	8Puzzle.cpp	/^static Puzzle::MoveType revertMoveType(Puzzle::MoveType type){$/;"	f	class:Puzzle
 set	8Puzzle.cpp	/^		void set(int r, int c, int v){$/;"	f	class:Puzzle
 setPuzzle	8Puzzle.cpp	/^		void setPuzzle(int vv[3][3]){$/;"	f	class:Puzzle
 setPuzzle	8Puzzle.cpp	/^		void setPuzzle(int vv[9]){$/;"	f	class:Puzzle
 size	8Puzzle.cpp	/^		int size()const{$/;"	f	class:PriorityQueue
-solveGame	8Puzzle.cpp	/^void solveGame(const Puzzle&p){$/;"	f
+solveGame	8Puzzle.cpp	/^void solveGame(const Puzzle&tp){$/;"	f
 solvePuzzle	8Puzzle.cpp	/^vector<Puzzle::MoveType>solvePuzzle(const Puzzle &p){$/;"	f
 top	8Puzzle.cpp	/^		T&top(){$/;"	f	class:PriorityQueue
 top	8Puzzle.cpp	/^		const T&top()const{$/;"	f	class:PriorityQueue
