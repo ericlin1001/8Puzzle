@@ -5,7 +5,6 @@ H is evalated by summing the hanming distance of each tile's position and its co
 <br/>
 
 ## Whether a puzzle is solvable? 
----
 <p>
 We denote a puzzle as A[i][j], where i=0,1,2; j=0,1,2; A[i][j]=0,1...8;<br/>
 And A[i][j] is the coresponding number of ith row and jth column.
