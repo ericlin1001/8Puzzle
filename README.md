@@ -36,7 +36,7 @@ It simply runs over all possibilities, and calculates the minimized number of mo
 And the result is 31.<br/>
 The program's also included in the main.cpp.
 
-### The most difficult Puzzle(needs at leat 31 motion), and coresponding goal position.
+### The most difficult Puzzle(needs at leat 31 motion), and corresponding goal position.
 ---
 Puzzle needed to solve:
 
