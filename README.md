@@ -1,6 +1,6 @@
 # 8Puzzle
-This is Eight Puzzle Game. An easy version of [15 Puzzle](https://en.wikipedia.org/wiki/15_puzzle)
-And I se a heuristic search algorithm [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) to solve it, the heuristic infomation is calculated by summing up all of [Hamming Distance](https://en.wikipedia.org/wiki/Hamming_distance) of each tile's position and its corresponding target position.
+This is 8 Puzzle Game, an easy version of [15 Puzzle](https://en.wikipedia.org/wiki/15_puzzle).
+And I use a heuristic search algorithm [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) to solve it, the heuristic infomation is calculated by summing up all of [Hamming Distance](https://en.wikipedia.org/wiki/Hamming_distance) of each tile's position and its corresponding target position.
 
 # Whether a puzzle is solvable? 
 A 8 Puzzle in any state can be represented by a 3x3 array A[i][j], where i, j =0, 1, 2; A[i][j] = 0, 1 ... 8; and A[i][j] = 0, if tile (i, j) is empty. A puzzle A is solvable is defined as: starting from A, after a number of eligible moves, it can reach goal G.
