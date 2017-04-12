@@ -1,51 +1,33 @@
 # 8Puzzle
-This is Eight Puzzle Game.<br>
-And i solve  it using heuristic search algorith.(f=g+h)<br>
-H is evalated by summing the hanming distance of each tile's position and its corresponding target position.<br/>
-<br/>
+This is Eight Puzzle Game. An easy version of [15 Puzzle](https://en.wikipedia.org/wiki/15_puzzle)
+And I se a heuristic search algorithm [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) to solve it, the heuristic infomation is calculated by summing up all of [Hamming Distance](https://en.wikipedia.org/wiki/Hamming_distance) of each tile's position and its corresponding target position.
 
-## Whether a puzzle is solvable? 
-<p>
-We denote a puzzle as A[i][j], where i=0,1,2; j=0,1,2; A[i][j]=0,1...8;<br/>
-And A[i][j] is the coresponding number of ith row and jth column.
-A[i][j]=0 iff. the ith row and jth column is empty.
-</p>
+# Whether a puzzle is solvable? 
+A 8 Puzzle in any state can be represented by a 3x3 array A[i][j], where i, j =0, 1, 2; A[i][j] = 0, 1 ... 8; and A[i][j] = 0, if tile (i, j) is empty. A puzzle A is solvable is defined as: starting from A, after a number of eligible moves, it can reach goal G.
+## How to check whether goal state G is reachable from A.
+1. Calculate inversion number of A as IA.  
+We denote inversion number(https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)#Inversion_number) of A as IA, which is calculated by letting C[i*3+j]=A[i][j], and calculating inversion number of C as IA, while ignore the number 0 (i.e. ignoring the empty tile).
+2. Calculate inversion number of G as IG.  
+Calculate IG just like IA.
+3. If (IA - IG) % 2 == 0, then G is reachable from A, otherwise it's unreachable.
 
-
-<p>
-Let C[i*3+j]=A[i][j], and 
-we denote inverted number of A as IA, IA is calculated by letting C[i*3+j]=A[i][j], and calculate C's inverted number as IA while ignore the number 0.(i.e. ignoring the empty position).
-</p>
-
-<p>
-Give a Puzzle A, and it's goal Puzzle G.
-We calculate the inverted number of A as IA, and G as IG.
-If parity of IA is the same as IG, we say A is compatiable with G, i.e. G is reachable from A.
-</p>
-
-<p>
-So, to test a puzzle A is solvable, first calculate it's inverted number IA, and goal Puzzle G's inverted number IG, then if (IA-IG) is even number, then A is solvable, otherwise it's unsolvable.
-</p>
-
-
-### The max number of motion to solve any Puzzle is 31!!!
----
-Well, this number is calculated by computer.<br/>
+# The max number of motion to solve any Puzzle is 31!!!
+Well, this number is calculated by computer.  
 It simply runs over all possibilities, and calculates the minimized number of motion to solve each Puzzle to get the max number of motion to solve any Puzzle.
-And the result is 31.<br/>
+And the result is 31.  
 The program's also included in the main.cpp.
 
-### The most difficult Puzzle(needs at leat 31 motion), and corresponding goal position.
----
-Puzzle needed to solve:
+# The most difficult Puzzle(needs at leat 31 motion), and corresponding goal position.
+1. Puzzle needed to solve:
+~~~
+  2 1 
+3 5 8 
+4 6 7 
+~~~
 
-	  2 1 
-	3 5 8 
-	4 6 7 
-
-
-Goal Puzzle needed to reach:
-
-	1 2 3 
-	8   4 
-	7 6 5 
+2. Goal Puzzle needed to reach:
+~~~
+1 2 3 
+8   4 
+7 6 5 
+~~~
