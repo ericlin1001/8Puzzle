@@ -6,7 +6,7 @@ And I se a heuristic search algorithm [A*](https://en.wikipedia.org/wiki/A*_sear
 A 8 Puzzle in any state can be represented by a 3x3 array A[i][j], where i, j =0, 1, 2; A[i][j] = 0, 1 ... 8; and A[i][j] = 0, if tile (i, j) is empty. A puzzle A is solvable is defined as: starting from A, after a number of eligible moves, it can reach goal G.
 ## How to check whether goal state G is reachable from A.
 1. Calculate inversion number of A as IA.  
-We denote inversion number(https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)#Inversion_number) of A as IA, which is calculated by letting C[i*3+j]=A[i][j], and calculating inversion number of C as IA, while ignore the number 0 (i.e. ignoring the empty tile).
+We denote [inversion number](https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)#Inversion_number) of A as IA, which is calculated by letting C[i*3+j]=A[i][j], and calculating inversion number of C as IA, while ignore the number 0 (i.e. ignoring the empty tile).
 2. Calculate inversion number of G as IG.  
 Calculate IG just like IA.
 3. If (IA - IG) % 2 == 0, then G is reachable from A, otherwise it's unreachable.
